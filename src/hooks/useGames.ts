@@ -15,11 +15,16 @@ export type Platform = {
   slug: string;
 };
 
-export const useGames = (genreId?: Genre["id"]) => {
+type Props = {
+  genreId?: Genre["id"];
+  platformId?: Platform["id"];
+};
+
+export const useGames = ({ genreId, platformId }: Props) => {
   const { data, ...rest } = useData<Game>(
     "games",
-    { params: { genres: genreId } },
-    [genreId]
+    { params: { genres: genreId, platforms: platformId } },
+    [genreId, platformId]
   );
 
   return {

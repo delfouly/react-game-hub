@@ -4,8 +4,10 @@ import { getCroppedImage } from "../services/cropImage";
 
 export const GenreList = ({
   onGenrePress,
+  selectedGenreId,
 }: {
   onGenrePress: (genreId: Genre["id"]) => void;
+  selectedGenreId?: Genre["id"];
 }) => {
   const { genres } = useGenres();
   if (!genres || !genres.length) return null;
@@ -24,6 +26,7 @@ export const GenreList = ({
               variant="link"
               onClick={() => onGenrePress(e.id)}
               fontSize="xl"
+              fontWeight={e.id === selectedGenreId ? "bold" : "normal"}
             >
               {e.name}
             </Button>
