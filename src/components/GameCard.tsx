@@ -12,7 +12,7 @@ type Props = Pick<Game, "name"> & {
 };
 export const GameCard = ({ image, name, platforms, score }: Props) => {
   return (
-    <Card overflow="hidden">
+    <Card>
       <Image src={getCroppedImage(image)} />
       <CardBody>
         <Heading fontSize={"2xl"}>{name}</Heading>
