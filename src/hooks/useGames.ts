@@ -1,4 +1,5 @@
 import { useData } from "./useData";
+import { Genre } from "./useGenres";
 
 export type Game = {
   id: number;
@@ -14,8 +15,12 @@ export type Platform = {
   slug: string;
 };
 
-export const useGames = () => {
-  const { data, ...rest } = useData<Game>("games");
+export const useGames = (genreId?: Genre["id"]) => {
+  const { data, ...rest } = useData<Game>(
+    "games",
+    { params: { genres: genreId } },
+    [genreId]
+  );
 
   return {
     games: data,

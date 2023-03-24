@@ -1,5 +1,3 @@
-import React from "react";
-import { Platform } from "../hooks/useGames";
 import {
   FaPlaystation,
   FaWindows,
@@ -13,6 +11,8 @@ import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { HStack, Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+
+import { Platform } from "../hooks/useGames";
 
 export const PlatformsIconsList = ({
   platforms,
@@ -34,7 +34,11 @@ export const PlatformsIconsList = ({
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => (
-        <Icon as={mappedIcons[platform.slug]} color="gray.500" />
+        <Icon
+          key={platform.id}
+          as={mappedIcons[platform.slug]}
+          color="gray.500"
+        />
       ))}
     </HStack>
   );
