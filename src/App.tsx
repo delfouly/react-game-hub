@@ -16,17 +16,21 @@ export function App() {
       // gap="1"
       // color="blackAlpha.700"
       // fontWeight="bold"
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem pl="2" area={"nav"}>
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem pl="2" bg="pink.300" area={"side"}>
+        <GridItem pl="2" area={"side"}>
           <GenreList />
         </GridItem>
       </Show>
 
-      <GridItem pl="2" bg="green.300" area={"main"}>
+      <GridItem pl="2" area={"main"}>
         <GamesGrid />
       </GridItem>
     </Grid>
