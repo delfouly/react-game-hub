@@ -13,13 +13,15 @@ export const GamesGrid = () => {
         padding="10"
       >
         {games.map((game: Game) => {
-          const { id, name, background_image, parent_platforms } = game;
+          const { id, name, background_image, parent_platforms, metacritic } =
+            game;
           return (
             <GameCard
               key={id}
               name={name}
-              background_image={background_image}
+              image={background_image}
               platforms={parent_platforms.map((e) => ({ ...e.platform }))}
+              score={metacritic}
             />
           );
         })}

@@ -1,19 +1,24 @@
-import { Card, CardBody, CardHeader, Image } from "@chakra-ui/react";
+import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
+
 import { Game, Platform } from "../hooks/useGames";
+import { GameBadge } from "./GameBadge";
 import { PlatformsIconsList } from "./PlatformsIconsList";
 
-type Props = Pick<Game, "name" | "background_image"> & {
+type Props = Pick<Game, "name"> & {
+  image: Game["background_image"];
   platforms: Platform[];
+  score: Game["metacritic"];
 };
-export const GameCard = ({ background_image, name, platforms }: Props) => {
-  console.log("platforms:", platforms);
-
+export const GameCard = ({ image, name, platforms, score }: Props) => {
   return (
     <Card overflow="hidden">
-      <Image src={background_image} />
+      <Image src={image} />
       <CardBody>
-        <CardHeader>{name}</CardHeader>
-        <PlatformsIconsList platforms={platforms} />
+        <Heading fontSize={"2xl"}>{name}</Heading>
+        <HStack justifyContent="space-between">
+          <PlatformsIconsList platforms={platforms} />
+          <GameBadge score={score} />
+        </HStack>
       </CardBody>
     </Card>
   );
