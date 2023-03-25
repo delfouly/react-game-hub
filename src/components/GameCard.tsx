@@ -15,11 +15,11 @@ export const GameCard = ({ image, name, platforms, score }: Props) => {
     <Card>
       <Image src={getCroppedImage(image)} />
       <CardBody>
-        <Heading fontSize={"2xl"}>{name}</Heading>
-        <HStack justifyContent="space-between">
+        <HStack justifyContent="space-between" marginBottom={3}>
           <PlatformsIconsList platforms={platforms} />
           <GameBadge score={score} />
         </HStack>
+        <Heading fontSize={"2xl"}>{name}</Heading>
       </CardBody>
     </Card>
   );

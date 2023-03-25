@@ -8,8 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { BsChevronDown } from "react-icons/bs";
-
-import { usePlatforms } from "../hooks/usePlatforms";
+import platforms from "../data/platforms";
 
 type Props = {
   onSelect: (id: Platform["id"]) => void;
@@ -17,7 +16,6 @@ type Props = {
 };
 
 export const PlatformSelector = ({ onSelect, genreId }: Props) => {
-  const { platforms, isLoading } = usePlatforms(genreId);
   const [isOpen, setIsOpen] = React.useState(false);
   const platformNameRef = React.useRef("Platforms");
 
@@ -33,22 +31,18 @@ export const PlatformSelector = ({ onSelect, genreId }: Props) => {
         </MenuButton>
 
         <MenuList>
-          {isLoading && isOpen ? (
-            <Spinner />
-          ) : (
-            platforms?.map((e) => (
-              <MenuItem
-                key={e.id}
-                onClick={() => {
-                  onSelect(e.id);
-                  setIsOpen(false);
-                  platformNameRef.current = e.name;
-                }}
-              >
-                {e.name}
-              </MenuItem>
-            ))
-          )}
+          {platforms.map((e) => (
+            <MenuItem
+              key={e.id}
+              onClick={() => {
+                onSelect(e.id);
+                setIsOpen(false);
+                platformNameRef.current = e.name;
+              }}
+            >
+              {e.name}
+            </MenuItem>
+          ))}
         </MenuList>
       </>
     </Menu>
