@@ -1,3 +1,4 @@
+import { GamesQuery } from "../App";
 import { useData } from "./useData";
 import { Genre } from "./useGenres";
 
@@ -20,11 +21,13 @@ type Props = {
   platformId?: Platform["id"];
 };
 
-export const useGames = ({ genreId, platformId }: Props) => {
+export const useGames = (gamesQuery: GamesQuery) => {
   const { data, ...rest } = useData<Game>(
     "games",
-    { params: { genres: genreId, platforms: platformId } },
-    [genreId, platformId]
+    {
+      params: { genres: gamesQuery.genreId, platforms: gamesQuery.platformId },
+    },
+    [gamesQuery]
   );
 
   return {

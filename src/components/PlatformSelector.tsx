@@ -21,6 +21,8 @@ type Props = {
 export const PlatformSelector = ({ onSelect, genreId }: Props) => {
   const { platforms, isLoading } = usePlatforms(genreId);
   const [isOpen, setIsOpen] = React.useState(false);
+  const platformNameRef = React.useRef("Platforms");
+
   return (
     <Menu isOpen={isOpen}>
       <>
@@ -29,7 +31,7 @@ export const PlatformSelector = ({ onSelect, genreId }: Props) => {
           onClick={() => setIsOpen(!isOpen)}
           rightIcon={<BsChevronDown color="gray.500" />}
         >
-          Platforms
+          {platformNameRef.current}
         </MenuButton>
 
         <MenuList>
@@ -42,6 +44,7 @@ export const PlatformSelector = ({ onSelect, genreId }: Props) => {
                 onClick={() => {
                   onSelect(e.id);
                   setIsOpen(false);
+                  platformNameRef.current = e.name;
                 }}
               >
                 {e.name}
