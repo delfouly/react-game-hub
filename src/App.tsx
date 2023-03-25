@@ -11,6 +11,7 @@ export type GamesQuery = {
   genreId?: Genre["id"];
   platformId?: Platform["id"];
   sortKey?: SortKey;
+  search?: string;
 };
 
 export function App() {
@@ -30,7 +31,11 @@ export function App() {
       }}
     >
       <GridItem area={"nav"}>
-        <NavBar />
+        <NavBar
+          onSubmitSearchQuery={(search) => {
+            setGamesQuery((prev) => ({ ...prev, search }));
+          }}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem pl="2" area={"side"}>

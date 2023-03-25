@@ -9,6 +9,7 @@ export const useGames = (gamesQuery?: GamesQuery) => {
         genres: gamesQuery?.genreId,
         platforms: gamesQuery?.platformId,
         ordering: gamesQuery?.sortKey,
+        search: gamesQuery?.search,
       },
     },
     [gamesQuery]
