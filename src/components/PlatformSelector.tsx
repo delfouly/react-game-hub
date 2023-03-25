@@ -9,8 +9,6 @@ import {
 import React from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-import { Platform } from "../hooks/useGames";
-import { Genre } from "../hooks/useGenres";
 import { usePlatforms } from "../hooks/usePlatforms";
 
 type Props = {

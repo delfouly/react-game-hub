@@ -1,32 +1,25 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Spinner,
-} from "@chakra-ui/react";
 import React from "react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
+const SORT = {
+  none: "Relevance",
+  added: "Date added",
+  name: "Name",
+  released: "Release date",
+  metacritic: "Popularity",
+  rating: "Average rating",
+} as const;
+
+export type SortKey = keyof typeof SORT;
+
 type Props = {
-  onSelect: (name: SortItem) => void;
+  onSelect: (name: SortKey) => void;
 };
-
-const SORT = [
-  "Relevance",
-  "Date added",
-  "Name",
-  "Release date",
-  "Popularity",
-  "Average rating",
-] as const;
-
-export type SortItem = typeof SORT[number];
 
 export const SortSelector = ({ onSelect }: Props) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const sortNameRef = React.useRef<SortItem>(SORT[0]);
+  const sortKeyRef = React.useRef<SortKey>("none" as SortKey);
 
   return (
     <Menu isOpen={isOpen}>
@@ -36,23 +29,25 @@ export const SortSelector = ({ onSelect }: Props) => {
           onClick={() => setIsOpen(!isOpen)}
           rightIcon={<BsChevronDown color="gray.500" />}
         >
-          Order by: {sortNameRef.current}
+          Order by: {SORT[sortKeyRef.current]}
         </MenuButton>
 
         <MenuList>
           {isOpen &&
-            SORT.map((e) => (
-              <MenuItem
-                key={e}
-                onClick={() => {
-                  onSelect(e);
-                  setIsOpen(false);
-                  sortNameRef.current = e;
-                }}
-              >
-                {e}
-              </MenuItem>
-            ))}
+            (Object.keys(SORT) as SortKey[]).map((e) => {
+              return (
+                <MenuItem
+                  key={e}
+                  onClick={() => {
+                    onSelect(e);
+                    setIsOpen(false);
+                    sortKeyRef.current = e;
+                  }}
+                >
+                  {SORT[e]}
+                </MenuItem>
+              );
+            })}
         </MenuList>
       </>
     </Menu>

@@ -12,25 +12,23 @@ import { BsGlobe } from "react-icons/bs";
 import { HStack, Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 
-import { Platform } from "../hooks/useGames";
+const mappedIcons: { [key: string]: IconType } = {
+  pc: FaWindows,
+  playstation: FaPlaystation,
+  android: FaAndroid,
+  xbox: FaXbox,
+  linux: FaLinux,
+  nintendo: SiNintendo,
+  mac: FaApple,
+  ios: MdPhoneIphone,
+  web: BsGlobe,
+};
 
 export const PlatformsIconsList = ({
   platforms,
 }: {
   platforms: Platform[];
 }) => {
-  const mappedIcons: { [key: string]: IconType } = {
-    pc: FaWindows,
-    playstation: FaPlaystation,
-    android: FaAndroid,
-    xbox: FaXbox,
-    linux: FaLinux,
-    nintendo: SiNintendo,
-    mac: FaApple,
-    ios: MdPhoneIphone,
-    web: BsGlobe,
-  };
-
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => (
