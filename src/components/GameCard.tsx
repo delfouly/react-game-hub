@@ -5,10 +5,11 @@ import { GameBadge } from "./GameBadge";
 import { PlatformsIconsList } from "./PlatformsIconsList";
 
 type Props = Pick<Game, "name"> & {
-  image: Game["background_image"];
+  image?: Game["background_image"];
   platforms: Platform[];
   score: Game["metacritic"];
 };
+
 export const GameCard = ({ image, name, platforms, score }: Props) => {
   return (
     <Card>
