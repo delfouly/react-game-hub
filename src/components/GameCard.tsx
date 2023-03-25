@@ -12,7 +12,7 @@ type Props = Pick<Game, "name"> & {
 
 export const GameCard = ({ image, name, platforms, score }: Props) => {
   return (
-    <Card>
+    <Card height={350}>
       <Image src={getCroppedImage(image)} />
       <CardBody>
         <HStack justifyContent="space-between" marginBottom={3}>

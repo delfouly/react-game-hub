@@ -8,6 +8,7 @@ type FetchResponse<T> = {
   results: T[];
 };
 
+//Generic hook to ftch data
 export const useData = <T>(
   endpoint: string,
   params?: AxiosRequestConfig,

@@ -17,3 +17,10 @@ type Genre = {
   name: string;
   image_background: string;
 };
+
+type GamesQuery = {
+  genreId?: Genre["id"];
+  platformId?: Platform["id"];
+  sortKey?: SortKey;
+  search?: string;
+};

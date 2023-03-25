@@ -1,13 +1,7 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Spinner,
-} from "@chakra-ui/react";
 import React from "react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+
 import platforms from "../data/platforms";
 
 type Props = {

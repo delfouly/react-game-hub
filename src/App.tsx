@@ -5,15 +5,8 @@ import { GamesGrid } from "./components/GamesGrid";
 import { GenreList } from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import { PlatformSelector } from "./components/PlatformSelector";
-import { SortKey, SortSelector } from "./components/SortSelector";
+import { SortSelector } from "./components/SortSelector";
 import { GameHeading } from "./components/GameHeading";
-
-export type GamesQuery = {
-  genreId?: Genre["id"];
-  platformId?: Platform["id"];
-  sortKey?: SortKey;
-  search?: string;
-};
 
 export function App() {
   const [gamesQuery, setGamesQuery] = React.useState<GamesQuery>(
@@ -50,7 +43,7 @@ export function App() {
       </Show>
 
       <GridItem area={"main"}>
-        <GameHeading platform={"platform"} genre={"genre"} />
+        <GameHeading {...gamesQuery} />
         <Flex paddingLeft={2} marginBottom={5}>
           <Box marginRight={5}>
             <PlatformSelector

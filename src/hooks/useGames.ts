@@ -1,4 +1,3 @@
-import { GamesQuery } from "../App";
 import { useData } from "./useData";
 
 export const useGames = (gamesQuery?: GamesQuery) => {

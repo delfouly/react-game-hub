@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
+
 import genres from "../data/genres";
 import { getCroppedImage } from "../services/cropImage";
 
@@ -18,7 +19,7 @@ export const GenreList = ({
 }) => {
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={3}>
+      <Heading fontSize="2xl" marginBottom={3} marginLeft={2}>
         Genres
       </Heading>
       <List padding={4}>
