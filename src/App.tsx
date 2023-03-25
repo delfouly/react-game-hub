@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 
 import { GamesGrid } from "./components/GamesGrid";
 import { GenreList } from "./components/GenreList";
@@ -29,7 +29,7 @@ export function App() {
         lg: "200px 1fr",
       }}
     >
-      <GridItem pl="2" area={"nav"}>
+      <GridItem area={"nav"}>
         <NavBar />
       </GridItem>
       <Show above="lg">
@@ -43,20 +43,26 @@ export function App() {
         </GridItem>
       </Show>
 
-      <GridItem pl="2" area={"main"}>
-        <PlatformSelector
-          onSelect={(platformId) =>
-            setGamesQuery((prev) => ({ ...prev, platformId }))
-          }
-        />
-        <SortSelector
-          onSelect={(sortKey) =>
-            setGamesQuery((prev) => ({
-              ...prev,
-              sortKey: sortKey === "none" ? undefined : sortKey,
-            }))
-          }
-        />
+      <GridItem area={"main"}>
+        <Flex paddingLeft={2} marginBottom={5}>
+          <Box marginRight={5}>
+            <PlatformSelector
+              onSelect={(platformId) =>
+                setGamesQuery((prev) => ({ ...prev, platformId }))
+              }
+            />
+          </Box>
+
+          <SortSelector
+            onSelect={(sortKey) =>
+              setGamesQuery((prev) => ({
+                ...prev,
+                sortKey: sortKey === "none" ? undefined : sortKey,
+              }))
+            }
+          />
+        </Flex>
+
         <GamesGrid gamesQuery={gamesQuery} />
       </GridItem>
     </Grid>
