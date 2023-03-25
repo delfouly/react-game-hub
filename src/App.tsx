@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import { PlatformSelector } from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import { Genre } from "./hooks/useGenres";
+import { SortItem, SortSelector } from "./components/SortSelector";
 
 export type GamesQuery = {
   genreId: Genre["id"];
@@ -17,6 +18,8 @@ export function App() {
   const [gamesQuery, setGamesQuery] = React.useState<GamesQuery>(
     {} as GamesQuery
   );
+
+  function handleSort(sortBy: SortItem) {}
 
   return (
     <Grid
@@ -49,6 +52,7 @@ export function App() {
             setGamesQuery((prev) => ({ ...prev, platformId }))
           }
         />
+        <SortSelector onSelect={handleSort} />
         <GamesGrid gamesQuery={gamesQuery} />
       </GridItem>
     </Grid>
